@@ -1,45 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { Button, StyleSheet, Text, View } from 'react-native';
+import React, { Suspense, useState } from 'react';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+const MyChunkComponent = React.lazy(() => import("./src/MyChunkComponent"));
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const App: React.FC = () => {
+  const [showChunk, setShowChunk] = useState(false);
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
+  const handlePressButton = () => {
+    setShowChunk(true)
+  }
 
   return (
     <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
+      <Text style={styles.text}>Chunk Component/Code Splitting POC</Text>
+      <Button
+        title='Show my chunk component'
+        onPress={handlePressButton}
       />
+      {
+        showChunk && (
+          <Suspense fallback={<Text style={styles.text}>Loading...</Text>}>
+            <MyChunkComponent />
+          </Suspense>
+        )
+      }
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    paddingTop: 150,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-});
+  text: {
+    color: 'white',
+    fontSize: 20,
+    marginBottom: 20
+  }
+})
 
 export default App;
