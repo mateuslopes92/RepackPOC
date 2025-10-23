@@ -2,6 +2,7 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import React, { Suspense, useState } from 'react';
 
 const MyChunkComponent = React.lazy(() => import("./src/MyChunkComponent"));
+// const MyRemoteComponent = React.lazy(() => import('./src/MyRemoteComponent'))
 
 const App: React.FC = () => {
   const [showChunk, setShowChunk] = useState(false);
@@ -24,6 +25,9 @@ const App: React.FC = () => {
           </Suspense>
         )
       }
+      {/* <Suspense fallback={<Text style={styles.text}>Loading...</Text>}>
+        <MyRemoteComponent />
+      </Suspense> */}
     </View>
   )
 }

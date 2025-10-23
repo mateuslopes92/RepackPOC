@@ -15,7 +15,15 @@ const __dirname = path.dirname(__filename);
 
 export default Repack.defineRspackConfig({
   context: __dirname,
-  entry: './index.js',
+  entry: {
+    index: './index.js', // your app entry
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    publicPath: 'http://localhost:3000/', // important for chunk resolution
+    filename: '[name].bundle',
+    chunkFilename: '[name].chunk.bundle', // generates chunks
+  },
   resolve: {
     ...Repack.getResolveOptions(),
   },
