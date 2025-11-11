@@ -38,3 +38,8 @@ yarn react-native bundle \
 I can get the chunks components from my server running locally in a node server.
 
 ## Screenshots and Video
+<img width="1256" height="1048" alt="Screenshot 2025-11-10 at 23 42 18" src="https://github.com/user-attachments/assets/9b04e901-abfe-41bf-b948-fb0e3b78fd3e" />
+
+
+https://github.com/user-attachments/assets/b5f822af-065e-46d4-a4a1-386d33bdb048
+
