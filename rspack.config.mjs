@@ -42,4 +42,11 @@ export default Repack.defineRspackConfig({
     ],
   },
   plugins: [new Repack.RepackPlugin()],
+  // plugins: [new Repack.RepackPlugin({
+  //   exposes: {
+  //     './src/MyChunkComponent': './src/MyChunkComponent.tsx',
+  //     // If you later want to load remote components:
+  //     './src/MyRemoteComponent': './src/MyRemoteComponent.tsx',
+  //   },
+  // })],
 });

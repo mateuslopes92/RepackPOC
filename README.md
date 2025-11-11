@@ -21,3 +21,20 @@ yarn react-native bundle \
 With this i successfully got my chunks.
 
 ## Server for chunks
+
+I created a server to give the chunks remotely to my app, im simulating a real scenario of an app running in production.
+
+As in dev, i needed to build my app with:
+```
+yarn react-native bundle \
+  --platform ios \
+  --dev true \
+  --entry-file index.js \
+  --bundle-output dist/index.bundle \
+  --assets-dest dist \
+  --config rspack.config.mjs
+```
+
+I can get the chunks components from my server running locally in a node server.
+
+## Screenshots and Video

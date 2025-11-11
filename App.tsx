@@ -1,7 +1,18 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
 import React, { Suspense, useState } from 'react';
 
-const MyChunkComponent = React.lazy(() => import("./src/MyChunkComponent"));
+const MyChunkComponent = React.lazy(() =>
+  import("./src/MyChunkComponent")
+);
+const MyRemoteComponent = React.lazy(() =>
+  import("./src/MyRemoteComponent")
+);
+// const MyChunkComponent = React.lazy(() =>
+//   import(/* webpackChunkName: "src_MyChunkComponent_tsx" */ "./src/MyChunkComponent")
+// );
+// const MyRemoteComponent = React.lazy(() =>
+//   import(/* webpackChunkName: "src_MyRemoteComponent_tsx" */ "./src/MyRemoteComponent")
+// );
 // const MyRemoteComponent = React.lazy(() => import('./src/MyRemoteComponent'))
 
 const App: React.FC = () => {
@@ -25,18 +36,19 @@ const App: React.FC = () => {
           </Suspense>
         )
       }
-      {/* <Suspense fallback={<Text style={styles.text}>Loading...</Text>}>
+      <Suspense fallback={<Text style={styles.text}>Loading...</Text>}>
         <MyRemoteComponent />
-      </Suspense> */}
+      </Suspense>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 150,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'gray',
+    paddingTop: 150
   },
   text: {
     color: 'white',
